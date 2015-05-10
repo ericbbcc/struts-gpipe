@@ -1,0 +1,12 @@
+# struts-gpipe
+这个项目的初衷是为了将groovy引入我们的struts web项目，在开发的过程中，发现有跟多可以做的是全，不过在最初的版本，struts-gpipe主要包括两个功能：
+
+1，经过简单的配置可以将groovy引入struts项目，这个时候我们可以将一些业务逻辑代码从java code中提取出来放在groovy里面，至于为什么要把一些业务逻辑代码放在groovy里面，这是因为我们可以利用groovy动态语言的特性，想一想，我们发布的时候再也不需要将java code编译成class然后在deploy。或许我们可以一秒钟搞定发布..这一点是振奋人心的..:)。但是这秒发的功能在struts-gpipe在最初的版本中并没有做，后面会陆续加入。
+
+2，struts-gpipe的第二个主要功能是实现了异步响应的思想，我们通常的web页面都是将所有内容渲染完才返回到页面的，如果这个页面很笨重，那么用户可能会遭遇到“白屏”的体验，这对产品来说简直是体验大打折扣，struts-gpipe项目提供了将整个页面拆分成若干模块的功能，每一个模块都独立渲染，多个模块并发渲染，我们可以让一部分模块渲染完成之后先返回给客户端，让另一部分模块渲染之后后返回给客户端，不用想，这样用户体验会好很多。
+
+struts-gpipe与struts和spring的整合：
+
+1，struts-gpipe提供注入spring容器bean的功能，用法一致。
+
+2，struts-gpipe提供ongl的功能，也就是会自动将模块属性引入freemarker渲染，这一点是和spring mvc不同的，用过spring mvc的都知道，spring mvc向freemarker传入数据需要往model传入塞，而这一点struts使用了ongl技术，让用户不用写塞数据的冗余代码。
